@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Bahasa Jepang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/materi.css">
+    
+    
+    
+</head>
+<body>
+    <!--Splash-->
+    <div id="splash-screen">
+      <img src="aset/logo.png" alt="Logo NihonGo" class="logo">
+      <h2 class="welcome">Selamat Datang di</h2>
+      <h1 class="judul">NihonGo</h1>
+      <p class="tagline">
+        Belajar Bahasa Jepang dengan Mudah 
+      </p>
+    </div>
+
+      
+       <!--DASHBOARD-->
+ <div id="app" style="display:none;">
+  <div class="dashboard">
+            <div class="header-pertama">
+             <h2>Nihon<span class="judul-merah">Go</span></h2>
+             <button class="menu-lainnya">
+               <span class="material-symbols-rounded">
+                 person
+               </span>
+             </button>
+            </div>
+       <!--CARD SELAMAT DATANG-->
+       <div class="header-card">
+          <h3> Selamat Datang</h3>
+          <h1>NihonGo</h1>
+          <p>Belajar Bahasa Jepang <br> Jadi Lebih Mudah!</p>
+       </div>
+   <div class="bungkus-isi">
+          <img src="aset/NihongoDecor/kucing_01.png" alt="" class="kucing">
+           
+         <!--PROGRS CARD-->
+      <div class="progress-card" onclick="tampilProgress()">
+           <div class="judul-card">
+              <span class="material-symbols-rounded">bar_chart</span>
+              <h3>Progress Belajar</h3>
+           </div>
+           <div class="persen-progress">
+             <span>45% Selesai</span>
+             <span>Lihat Detail ></span>
+           </div>
+           <div class="progress">
+           <div class="progress-bar" style="width:45%;"></div>
+           </div>
+      </div>
+         <!--TARGET CARD-->
+     <div class="target-card" onclick="tampilProgress()">
+        <div class="judul-card">
+           <span class="material-symbols-rounded">target</span>
+           <h3>Target Hari Ini</h3>
+        </div>
+        <div class="info-target">
+          <span>8 / 10 Soal</span>
+          <span>
+           Sisa <b>2 Soal</b> lagi 💪
+          </span>
+        </div>
+        <div class="progress">
+        <div class="progress-bar" style="width:80%;"></div>
+        </div>
+     </div>
+
+     <!--LANJUTKAN CARD-->
+     <div class="lanjut-card">
+
+      <div class="judul-card">
+          <span class="material-symbols-rounded">
+            play_circle
+          </span>
+          <h3>Lanjutkan Belajar</h3>
+      </div>
+
+      <div class="lanjut-isi" onclick="tampilKanji()">
+        <div>
+            <h4>📖 Kanji N5</h4>
+            <p>Bab 1 - Angka</p>
+            <small>Terakhir dipelajari: 一、二、三</small>
+        </div>
+        <span>Lanjutkan</span>
+      </div>
+
+     </div>
+      <!--MENU GRID-->
+      <div class="menu-grid">
+
+        <button class="menu-card" onclick="tampilHiragana('home')">
+          <span class="menu-huruf-a">あ</span>
+          <p>Hiragana</p>
+        </button>
+
+        <button class="menu-card" onclick="tampilKatakana('home')">
+         <span class="menu-huruf-b">ア</span>
+         <p>Katakana</p>
+        </button>
+
+        <button class="menu-card" onclick="tampilKanji('home')">
+         <span class="menu-huruf-c">漢</span>
+         <p>Kanji</p>
+        </button>
+
+        <button class="menu-card" onclick="popupPet()">
+         <span id="menu-huruf-d" class="material-symbols-rounded">pets</span>
+         <p>GoGo Pet</p>
+        </button>
+      </div>
+    </div>
+  </div>
+ </div>
+<div id="isi"></div>
+          <!--Navigasi Bawah-->
+<nav id="bottomNav" class="bottom-nav">
+    <button class="nav-item active" onclick="aktifNav(this); home(this);">
+        <span class="material-symbols-rounded">home</span>
+        <small>Home</small>
+    </button>
+
+    <button class="nav-item" onclick="aktifNav(this); tampilMateri(this);">
+    <span class="material-symbols-rounded">menu_book</span>
+      <small>Materi</small>
+    </button>
+
+    <button class="nav-item" onclick="tampilLatihan(this)">
+        <span class="material-symbols-rounded">edit_note</span>
+        <small>Latihan</small>
+    </button>
+
+    <button class="nav-item" onclick="tampilProgress(this)">
+        <span class="material-symbols-rounded">bar_chart</span>
+        <small>Progress</small>
+    </button>
+
+    <button class="nav-item" onclick="tampilPengaturan(this)">
+        <span class="material-symbols-rounded">settings</span>
+        <small>Pengaturan</small>
+    </button>
+</nav>
+
+
+
+
+
+    <!-- Popup Info -->
+    <div id="popupInfo" class="popup">
+
+        <div class="popup-content">
+
+            <span class="close" onclick="tutupPopupInfo()">✖</span>
+            <h2 id="judulInfo"></h2>
+            <div id="isiInfo"></div>
+
+        </div>
+
+    </div>
+ 
+         <!--POPUP HASIL LATHAN -->
+<div id="popupHasilLatihan" class="popup-hasil-latihan">
+
+    <div class="popup-hasil-content">
+
+        <div class="popup-hasil-icon">
+            🎉
+        </div>
+
+        <h2>Latihan Selesai!</h2>
+
+        <p class="popup-hasil-pesan">
+    Kamu sudah menyelesaikan
+    <span id="jumlahSoalHasil">10</span> soal.
+        </p>
+
+        <div class="skor-hasil">
+            <span>Skor Kamu</span>
+            <strong id="skorHasil">0 / —</strong>
+        </div>
+
+        <div class="hasil-statistik">
+
+            <div class="statistik benar">
+                <span>✓</span>
+
+                <div>
+                    <strong id="jumlahBenar">0</strong>
+                    <small>Benar</small>
+                </div>
+            </div>
+
+            <div class="statistik salah">
+                <span>×</span>
+
+                <div>
+                    <strong id="jumlahSalah">0</strong>
+                    <small>Salah</small>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TOMBOL DETAIL -->
+        <button
+            class="tombol-detail-hasil"
+            onclick="tampilkanDetailHasil()">
+            Detail Jawaban
+        </button>
+
+        <div class="tombol-hasil-container">
+
+            <button
+                class="tombol-latihan-lagi"
+                onclick="tutupPopupHasil(); mulaiLatihanHuruf(levelLatihanAktif);">
+                Latihan Lagi
+            </button>
+
+            <button
+                class="tombol-kembali-hasil"
+                onclick="tutupPopupHasil(); tampilLevelLatihan();">
+                Kembali
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+ 
+ 
+         <!-- POPUP INFO LATIHAN CARD -->
+<div id="popupInfoSoal" class="popup-info-soal">
+
+    <div class="popup-info-content">
+
+        <button class="tutup-info" onclick="tutupInfoSoal()">
+            <span class="material-symbols-rounded">
+                close
+            </span>
+        </button>
+
+        <div class="info-icon">
+            <span class="material-symbols-rounded">
+                info
+            </span>
+        </div>
+
+        <h2>Cara Latihan</h2>
+
+        <p>
+            Pilih romaji yang paling tepat untuk huruf Jepang
+            yang ditampilkan.
+        </p>
+
+        <div class="info-langkah">
+
+            <div>
+                <span>1</span>
+                <p>Pilih salah satu jawaban.</p>
+            </div>
+
+            <div>
+                <span>2</span>
+                <p>Tekan tombol <b>Konfirmasi</b>.</p>
+            </div>
+
+            <div>
+                <span>3</span>
+                <p>Lihat hasil jawabanmu, lalu lanjutkan ke soal berikutnya.</p>
+            </div>
+
+        </div>
+
+        <button class="tombol-mengerti"
+            onclick="tutupInfoSoal()">
+            Mengerti
+        </button>
+
+    </div>
+
+</div>
+      <!-- POPUP PERINGATAN KELUAR LATIHAN -->
+ <div id="popupKeluarLatihan" class="popup-keluar-latihan">
+
+    <div class="popup-keluar-content">
+
+        <div class="peringatan-icon">
+            <span class="material-symbols-rounded">
+                warning
+            </span>
+        </div>
+
+        <h2>Keluar dari latihan?</h2>
+
+        <p>
+            Progres latihan ini tidak akan disimpan sebelum menyelesaikan latiha.
+            Kamu yakin ingin keluar?
+        </p>
+
+        <div class="tombol-keluar-container">
+
+            <button class="tombol-tetap-latihan"
+                onclick="tutupPopupKeluar()">
+                Tetap Latihan
+            </button>
+
+            <button class="tombol-keluar"
+                onclick="keluarLatihan()">
+                Keluar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+       <!-- POPUP FITUR BARU -->
+ <div id="popup-pet" class="popup">
+    <div class="popup-box">
+
+        <span 
+            class="material-symbols-rounded"
+            onclick="tutupPopupPet()">
+            close
+        </span>
+
+        <span class="material-symbols-rounded">
+            construction
+        </span>
+
+        <h3>Fitur Sedang Dikembangkan</h3>
+
+        <p>
+            Fitur Pet Game sedang dalam proses pengembangan.
+            Nantikan update selanjutnya! 🐾
+        </p>
+
+        <button onclick="tutupPopupPet()">
+            Mengerti
+        </button>
+
+    </div>
+</div>
+ 
+ 
+ 
+ 
+ 
+<script src="js/main.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/hiragana.js"></script>
+<script src="js/katakana.js"></script>
+<script src="js/kanji.js"></script>
+<script src="js/latihan.js"></script>
+<script src="js/tips.js"></script>
+<script src="data/kanjiN5.js"></script>
+<script src="js/progres.js"></script>
+</body>
+</html>
