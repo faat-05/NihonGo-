@@ -1,0 +1,1172 @@
+/* =======================================
+   KANA
+======================================= */
+/* kode hiragana */
+.hiragana-container{
+    padding: 5px;
+}
+
+.info-kana{
+    margin-top: var(--space-sm);
+    font-size: var(--fs-normal);
+    text-align: center;
+}
+/* Tampilan Kartu Kana */
+.kana-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+.kana-card {
+    background: var(--PuGe);
+    border: none;
+    border-radius: 18px;
+    min-height: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+    position: relative;
+}
+.kana-card:active {
+    background: #FCE8E8;
+    border-color: #BE1212;
+}
+.kana-card:active {
+    transform: scale(0.98);
+}
+.kana-huruf {
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--hitam);
+}
+.kana-romaji {
+    font-size: 14px;
+    color: var(--abu);
+    font-weight: 500;
+}
+.kana-wrapper {
+    background: var(--putih);
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border-top: 3px solid var(--merah-utama);
+    margin-top: 23px;
+}
+
+/* Tampilan Detail Kana*/
+.detail-kana-container {
+    width: 100%;
+    padding: 5px;
+}
+.detail-kana-card {
+    background: var(--putih);
+    border-radius: 30px;
+    padding: 30px 25px;
+    margin: 25px 15px 0;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--merah-utama);
+    position: relative;
+}
+/*  INDIKATOR DETAIL KANA  */
+.mastery-indikator-detail {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            var(--merah-utama) var(--mastery),
+            var(--abu-muda) var(--mastery)
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mastery-indikator-detail::before {
+    content: "";
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--putih);
+}
+
+.mastery-angka-detail {
+    position: relative;
+    z-index: 2;
+    font-size: 13px;
+    font-weight: 700;
+    color: #616161;
+}
+
+.mastery-indikator-detail.sudah-kuasai {
+    background: var(--merah-utama);
+}
+
+.mastery-indikator-detail.sudah-kuasai::before {
+    display: none;
+}
+
+.mastery-indikator-detail.sudah-kuasai
+.mastery-angka-detail {
+    color: #F5F5F5;
+    font-size: 19px;
+}
+
+.detail-kana-huruf {
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--hitam);
+    margin-bottom: 30px;
+}
+.detail-kana-romaji {
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--hitam);
+}
+.detail-kana-pemisah {
+    height: 1px;
+    background: #E0E0E0;
+    margin: 8px 15px;
+}
+.detail-kana-info {
+    text-align: center;
+}
+.label-kana {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--hitam);
+    margin-bottom: 10px;
+}
+.contoh-kana {
+    background: #F3F3F3;
+    border-radius: 18px;
+    padding: 15px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.contoh-kana strong {
+    font-size: 24px;
+    color: var(--hitam);
+}
+.contoh-kana span {
+    font-size: 16px;
+    color: #757575;
+}
+
+/* Tombol kanan kiri detil kana */
+.navigasi-kana {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 20px 15px 0;
+}
+
+.btn-kana-nav {
+    flex: 1;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 15px;
+    background: #333;
+    color: var(--putih);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-kana-nav:disabled {
+    opacity: 0.5;
+    color: var(--putih);
+    cursor: default;
+}
+/* BUNGKUS TAB KANA+ PROGRES KANA */
+.bungkus-tab-kana {
+    margin-top: 15px;
+}
+/* TOMBOL TAB KANA */
+.menu-tab{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    background: var(--putih);
+    margin-top: -40px;
+    padding: 15px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    
+
+    position: relative;
+    z-index: 2;
+
+}
+.menu-tab::-webkit-scrollbar{
+    display:none;
+}
+.menu-tab button{
+    flex:0 0 auto;
+    padding:10px 15px;
+    border:none;
+    border-radius:20px;
+    background:#e0e0e0;
+    color:#333;
+    font-size: var(--fs-kecil);
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+.menu-tab button:hover{
+    background:var(--merah-hover);
+    color:white;
+}
+.menu-tab button.aktif{
+    background:var(--merah-utama);
+    color:white;
+}
+/*  Bar kana */
+.progress-hiragana {
+    margin-top: -40px;
+    padding: 45px 20px 20px;
+    background: var(--putih);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: 1;
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+#namaProgress {
+    color: var(--hitam);
+    font-size: var(--fs-normal);
+    font-weight: 600;
+}
+#jumlahProgress {
+    color: var(--hitam);
+    font-size: var(--fs-kecil);
+    font-weight: 600;
+}
+.progress-kana-track {
+    width: 100%;
+    height: 8px;
+    background: var(--abu-muda);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--merah-utama);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+/*  BAR PROGRES INDIKATOR KANA */
+.mastery-indikator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            var(--merah-utama) var(--mastery),
+            var(--abu-muda) var(--mastery)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mastery-indikator::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--putih);
+}
+.mastery-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--merah-utama);
+    transition: height 0.4s ease;
+}
+.mastery-angka {
+    position: relative;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--hitam);
+}
+.mastery-indikator.sudah-kuasai {
+    background: var(--merah-utama);
+}
+
+.mastery-indikator.sudah-kuasai::before {
+    display: none;
+}
+
+.mastery-indikator.sudah-kuasai .mastery-angka {
+    color: #F5F5F5;
+    font-size: 14px;
+    font-weight: 700;
+}
+/*========================================
+    TAMPILAN UTAMA MATERI
+=========================================*/
+.menu-materi{
+    padding: 5px;
+    padding-bottom: 100px;
+}
+.simbol {
+    font-size: var(--fs-simbol);
+    font-weight: 900;
+    color: var(--putih);
+}
+.card-content-top:active,
+.card-content:active {
+    transform: scale(.98);
+}
+
+
+.simbol-hi {
+    background: var(--warna-hiragana);
+}
+
+.simbol-ka {
+    background: var(--warna-katakana);
+}
+.simbol-kan {
+   background: var(--warna-kanji); 
+}
+
+.bg-kan .simbol,
+.bg-hi .simbol,
+.bg-ka .simbol {
+    margin: 0;
+    padding: 0;
+}
+.lvl-2,
+.bg-teka,
+.bg-kosakata {
+    background: var(--warna-kosakata);
+}
+.lvl-1,
+.bg-tatabahasa {
+    background: var(--warna-tata-bahasa);
+}
+.lvl-3{
+    background: var(--merah-utama);
+}
+.bg-kana{
+    background: var(--warna-hiragana);
+}
+.bg-poka{
+    background: var(--warna-tata-bahasa);
+}
+.bg-poka,
+.lvl-1,
+.lvl-2,
+.lvl-3,
+.bg-teka,
+.simbol-hi,
+.simbol-ka,
+.simbol-kan,
+.bg-kana,
+.bg-tatabahasa,
+.bg-kosakata {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    color: var(--putih);
+    font-size: 32px;
+    font-weight: 550;
+    min-width: 50px;
+    min-height: 50px;
+
+    padding: 0;
+    margin: 0;
+
+    flex: 0 0 50px;
+    flex-shrink: 0;
+}
+
+/* =======================================
+   TAMPILAN UTAMA LATIHAN
+======================================= */
+.menu-latihan {
+    padding: 5px;
+    padding-bottom: 100px;
+}
+.content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: -28px;
+    background: var(--putih);
+    padding: 5px;
+    border-radius: 20px;
+    height: auto;
+}
+.card-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: var(--PuGe);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    height: 85px;
+}
+.card-content-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: var(--PuGe);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    height: 85px;
+    margin-top: 10px;
+}
+.card-content-top h3,
+.card-content h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+.card-content-top p,
+.card-content p {
+    margin: 0;
+    color: var(--abu);
+    font-size: 13px;
+    line-height: 1.4;
+}
+.panah-latihan {
+    font-size: 28px;
+    color: var(--abu);
+    margin-left: auto;
+}
+
+/* LEVEL LATIHAN */
+.menu-level-latihan {
+    padding: 5px;
+}
+.level-info {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.level-info p {
+    margin: 0;
+    color: var(--abu);
+    font-size: 13px;
+}
+
+/* =========================
+   SOAL TEBAK HURUF
+========================= */
+.soal-container{
+    padding:5px;
+}
+.soal-card {
+    background: #ffffff;
+    border-radius: 28px;
+    margin: 22px 10px 40px;
+    padding: 22px 20px 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+.soal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* bagian nomor + info */
+.instruksi-soal {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #757575;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.pemisah-soal {
+    width: 85%;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 25px auto 25px;
+}
+
+.nomor-soal {
+    font-size: var(--fs-normal);
+    font-weight: 600;
+    color: #555;
+}
+
+.tombol-info-soal {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* huruf */
+.huruf-soal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 230px;
+    font-size: 100px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* card pilihan */
+.pilihan-card {
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.pilihan-card button {
+    height: 58px;
+    border: 2px solid #ddd;
+    border-radius: 14px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.pilihan-card button:active {
+    transform: scale(.97);
+}
+
+/* pilihan sementara */
+.pilihan-card button.terpilih {
+    border-color: var(--merah-utama);
+    background: var(--merah-muda);
+}
+
+/* tombol konfirmasi */
+.tombol-konfirmasi {
+    width: 100%;
+    height: 55px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 25px;
+    background: var(--merah-utama);
+    color: #fff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* koreksi */
+.pilihan-card button.jawaban-benar {
+    background: #e8f7e8;
+    border-color: #4caf50;
+    color: #2e7d32;
+}
+
+.pilihan-card button.jawaban-salah {
+    background: #fdeaea;
+    border-color: #e53935;
+    color: #c62828;
+}
+
+.pilihan-card button:disabled {
+    cursor: default;
+}
+
+/* Tombol berikutnya */
+.tombol-hasil {
+    background: #4CAF50 !important;
+}
+.tombol-hasil:hover {
+    background: #43A047 !important;
+}
+.tombol-berikutnya {
+    width: 100%;
+    height: 55px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 25px;
+    background: #4CAF50;
+    color: #fff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.tombol-berikutnya:hover {
+    background: #43A047;
+}
+.tombol-berikutnya:active {
+    transform: scale(0.98);
+}
+
+
+
+
+
+/* =======================================
+   KANJI
+======================================= */
+.menu-kanji-container{
+    padding: 5px;
+}
+/* PENCARIAN KANJI */
+.search-kanji{
+    display:flex;
+    align-items:center;
+    background: var(--putih);
+    border-radius:15px;
+    padding:10px 15px;
+    margin:10px 0px;
+    box-shadow: var(--shadow);
+    gap: 12px;
+}
+.search-kanji span{
+    font-size:25px;
+}
+#clearSearch{
+    cursor: pointer;
+    display: none;
+}
+.search-kanji input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:18px;
+    background:transparent;
+}
+
+/* HASIL PENCARIAN */
+.hasil-kanji{
+    background: var(--putih);
+    padding: 5px 25px;
+    border-radius:20px;
+    margin-bottom: 5px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+.hasil-kanji h3{
+    font-size: var(--fs-subjudul);
+}
+.hasil-kanji p{
+    margin:2px 0;
+    font-size: var(--fs-kecil);
+}
+.kosong{
+    text-align:center;
+    color:#666;
+    margin-bottom:20px;
+}
+
+/* CARD N5 KANJI */
+.progress-kanji{
+    background: var(--putih);
+    padding:var(--space-sm);
+    border-radius:20px;
+    margin-top: var(--space-xs);
+    box-shadow: var(--shadow);
+    transition:.3s;
+    margin-bottom: 5px;
+}
+.info-progress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: var(--fs-normal);
+    padding: 0px 10px;
+}
+#persen-progress,
+.persen-progress{
+    font-weight: bold;
+}
+.progress-kanji.aktif .progress-bar{
+    background: var(--putih);
+}
+.progress-kanji.aktif .progress{
+    background: #989898;
+}
+.progress-kanji.aktif{
+    background:var(--merah-utama);
+    color:white;
+}
+.progress-kanji.aktif {
+    color:white;
+}
+.progress-kanji:active{
+    transform:scale(.99);
+}
+.header-level{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    margin-bottom: 5px;
+    padding: 0px 10px;
+}
+#panahN5{
+    font-size: var(--fs-subjudul);
+    font-weight:bold;
+    transition:transform .3s ease;
+    display: inline-block;
+}
+.bab-list{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:max-height .35s ease, opacity .35s ease;
+}
+.bab-list.buka{
+    max-height:600px;
+    opacity:1;
+}
+/*!important!important!important*/
+.progress-kanji:hover{
+    scale: 0.98;
+}
+
+/* DAFTAR BAB */
+.bab-kanji{
+    width:100%;
+    background:var(--putih);
+    border:none;
+    border-radius:15px;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .25s ease;
+    margin-bottom:5px;                          
+    box-shadow: var(--shadow);
+}
+.bab-kanji:hover{
+    transform:scale(1.0);
+    background:var(--merah-hover);
+    color:white;
+}
+.bab-kanji:active{
+    transform:scale(.98);
+}
+
+/* TAMPILAN BAB KANJI */
+.bab-kanji-container{
+    padding: 5px;
+}
+.deskripsi-bab{
+    color:var(--abu);
+    font-size:var(--fs-normal);
+    line-height:1.5;
+    padding: 5px 5px;
+}
+.info-bab{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 8px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    font-size:var(--fs-normal);
+    font-weight:600;
+}
+.grid-kanji{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap: 5px;
+    margin-top: 5px;
+}
+.card-kanji{
+    background:var(--putih);
+    border-radius:18px;
+    padding:18px;
+    position:relative;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:var(--shadow);
+    height: 170px;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-kanji:hover{
+    transform:scale(1.);
+}
+.card-kanji:active{
+    transform:scale(.97);
+}
+.huruf-kanji{
+    font-size: var(--fs-simbol);
+    font-weight: 600;
+    margin-top:10px;
+}
+.arti-kanji{
+    margin-top:8px;
+    font-size:var(--fs-normal);
+    color:var(--abu);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =======================================
+   DETAIL KANJI
+======================================= */
+
+/* TAMPILAN DETAIL KANJI */
+.detail-kanji-container{
+    padding: 5px;
+}
+.detail-kanji {
+    padding: 10px;
+}
+.kanji-card{
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    perspective: 1000px;
+}
+
+/* TOMBOL CENTANG */
+.tombol-centang{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    top: 18px;
+    right: 18px;
+}
+.tombol-centang.selesai{
+    background: var(--merah-utama);
+    border-color: var(--merah-utama);
+    color:#fff;
+    transform:scale(1.08) ;
+    transition: .25s;
+    font-size: 25px;
+}
+
+/* INDIKATOR CKLIS */
+.ceklis-kanji{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ceklis-kanji.selesai{
+    background: var(--merah-utama);
+    color: white;
+}
+
+/* INDIKATOR CEKLIS PENCARIAN */
+.ceklis-hasil{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--merah-utama);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* TAMPILAN KARTU DEPAN */
+.kanji-besar {
+    font-size: 90px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 90px;
+    text-shadow: var(--shadow);
+}
+.arti-kanji-besar {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px 20px;
+}
+.flip-info{
+    text-align: center;
+    color: #777;
+    font-size: var(--fs-normal);
+    margin-top: 35px;
+}
+.info-level{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 15px;
+    color: var(--hitam);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* KARTU BALIK */
+.kanji-card-inner{
+    position: relative;
+    width: 100%;
+    height: 500px; /* sementara */
+    transition: transform .6s;
+    transform-style: preserve-3d;
+}
+.kanji-card-inner.flip{
+    transform: rotateY(180deg);
+}
+.kanji-card-back{
+    transform: rotateY(180deg);
+}
+
+/* KARTU KANJI DEPAN BELAKANG */
+.kanji-card-front,
+.kanji-card-back{
+    position: absolute;
+    inset: 0;
+    background: var(--putih);
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* KARTU BELAKANG KANJI */
+.kanji-card-back{
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+.kanji-card-back h2{
+    text-align: center;
+    margin: 10px 0 20px;
+    font-size: var(--fs-subjudul);
+}
+.card-info h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin: 10px 0px;
+    font-size: var(--fs-normal);
+}
+.card-info p {
+    font-size: var(--fs-normal);
+    font-weight: 500;
+}
+
+/* WARNA KANJI DIPELAJARI */
+.kanji-belajar {
+    color: #2196f3;
+    font-weight: 600;
+    text-shadow: 0 0 0.3px currentColor;
+}
+
+/* NAVIGASI KANJI */
+.navigasi-kanji{
+    display:flex;
+    justify-content:space-between;
+    align-items:center; /* Biar semua sejajar */
+    margin-top:25px;
+}
+.navigasi-kanji span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: var(--fs-kecil);
+    font-weight:bold;
+    line-height:1;
+}
+.navigasi-kanji button {
+    padding: 15px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #333;
+    color: white;
+}
+.navigasi-kanji button:disabled{
+
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+/* =======================================
+    TAMPILAN UTAMA PROGRES
+======================================= */
+.menu-progress {
+    padding: 5px;
+    padding-bottom: 100px;
+}
+
+.progress-ringkasan {
+    background: var(--putih);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.progress-ringkasan-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.progress-ringkasan-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.progress-ringkasan-header .material-symbols-rounded {
+    color: var(--merah-utama);
+    font-size: 26px;
+}
+
+.progress-item {
+    margin-bottom: 15px;
+}
+
+.progress-item:last-child {
+    margin-bottom: 0;
+}
+
+.progress-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: var(--abu-muda);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--merah-utama);
+    border-radius: 10px;
+}
+
+.target-info,
+.aktivitas-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.target-info strong,
+.aktivitas-info strong {
+    font-size: 24px;
+    color: var(--merah-utama);
+}
+
+.target-info span,
+.aktivitas-info span {
+    color: var(--abu);
+    font-size: 13px;
+}
+
+/* =======================================
+   TAMPILAN UTAMA PENGATURAN
+======================================= */
+.menu-pengaturan {
+    padding: 5px;
+    padding-bottom: 100px;
+}
+.pengaturan-section {
+    margin-top: 20px;
+}
+.pengaturan-section > h3 {
+    margin: 0 0 8px 8px;
+    font-size: 15px;
+    color: var(--abu);
+}
+.setting-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    margin-bottom: 6px;
+    min-height: 60px;
+    background: var(--putih);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.setting-card div {
+    flex: 1;
+}
+.setting-card h4 {
+    margin: 0 0 4px;
+    font-size: 15px;
+}
+.setting-card p {
+    margin: 0;
+    color: var(--abu);
+    font-size: 12px;
+}
