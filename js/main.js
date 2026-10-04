@@ -251,7 +251,7 @@ function tampilLevelKanji() {
 
             <div class="content-grid">
 
-                <div class="card-content-top">
+                <div class="card-content-top" onclick="tampilBabKanjiN5()">
                     <span class="simbol-kan">
                         N5
                     </span>
@@ -315,6 +315,75 @@ function tampilLevelKanji() {
 
                     <span class="panah-latihan">›</span>
                 </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+    tampilNavbar();
+    scrollAtas();
+}
+
+// BAB KANJI LATIHAN
+function tampilBabKanjiN5() {
+
+    // Ambil nomor bab yang tersedia
+    const daftarBab = [...new Set(kanjiN5.map(item => item.bab))];
+
+    let htmlBab = "";
+
+    daftarBab.forEach(bab => {
+
+        // Ambil semua kanji dalam bab
+        const dataBab = kanjiN5.filter(item => item.bab === bab);
+
+        // Nama bab sementara
+        let namaBab = `Bab ${bab}`;
+
+        if (bab === 1) {
+            namaBab = "Angka & Waktu";
+        } else if (bab === 2) {
+            namaBab = "Keluarga & Sekolah";
+        } else if (bab === 3) {
+            namaBab = "Kegiatan Belajar";
+        }
+
+        htmlBab += `
+            <div class="card-content"
+                 onclick="tampilLevelBabKanji(${bab})">
+
+                <span class="simbol-kan">
+                    漢
+                </span>
+
+                <div>
+                    <h3>Bab ${bab}</h3>
+                    <p>${namaBab} · ${dataBab.length} Kanji</p>
+                </div>
+
+                <span class="panah-latihan">›</span>
+
+            </div>
+        `;
+    });
+
+    document.getElementById("isi").innerHTML = `
+
+        <div class="menu-latihan">
+
+            <div class="judul-header">
+                <span class="material-symbols-rounded logo-halaman">
+                    school
+                </span>
+
+                <h2>Kanji N5</h2>
+            </div>
+
+            <div class="content-grid">
+
+                ${htmlBab}
 
             </div>
 
