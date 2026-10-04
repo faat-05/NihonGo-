@@ -12,6 +12,12 @@ let sudahDikonfirmasi = false;
 let hasilSesi = [];
 let jumlahSoalLatihan = 10;
 
+// DATA LATIHAN KANJI
+let dataLatihanKanji = [];
+let nomorSoalKanji = 0;
+let jawabanBenarKanji = 0;
+let babLatihanKanji = 0;
+let levelLatihanKanji = 0;
 
 // SISTEM PILIHAN JAWABAN TEBAK HURUF
 function pilihJawaban(tombol) {
@@ -519,4 +525,62 @@ function ambilSoalCampuran(dataHiragana, dataKatakana, jumlah) {
     console.log("HASIL AKHIR:", hasilAkhir);
 
     return hasilAkhir;
+}
+
+
+function cekJawabanKanji(jawabanId, soalId, tombol) {
+
+    const semuaTombol = document.querySelectorAll(
+        ".pilihan-jawaban-kanji"
+    );
+
+    // Cegah memilih jawaban lagi
+    semuaTombol.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    const benar = jawabanId === soalId;
+
+    if (benar) {
+        jawabanBenarKanji++;
+    }
+
+    // Tandai jawaban
+    semuaTombol.forEach(btn => {
+
+        const onclick = btn.getAttribute("onclick");
+
+        if (onclick.includes(`, ${soalId}`)) {
+            // nanti kita cari jawaban benar
+        }
+    });
+
+    if (benar) {
+
+        tombol.classList.add("jawaban-benar");
+
+        document.getElementById("feedbackKanji").innerHTML = `
+            <div class="feedback-kanji benar">
+                <strong>✓ Benar!</strong>
+                <button onclick="soalBerikutnyaKanji()">
+                    Lanjut
+                </button>
+            </div>
+        `;
+
+    } else {
+
+        tombol.classList.add("jawaban-salah");
+
+        document.getElementById("feedbackKanji").innerHTML = `
+            <div class="feedback-kanji salah">
+                <strong>✕ Kurang tepat</strong>
+                <button onclick="soalBerikutnyaKanji()">
+                    Lanjut
+                </button>
+            </div>
+        `;
+
+    }
+
 }
