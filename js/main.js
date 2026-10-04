@@ -249,6 +249,7 @@ function tampilLevelLatihan() {
                 
               <div class="judul-kiri">
                 <h2>Tebak Kana</h2>
+              </div>
 
                 <button class="tombol-kembali"
                     onclick="tampilLatihan()">
@@ -257,7 +258,6 @@ function tampilLevelLatihan() {
                     </span>
                     
                 </button>
-              </div>
 
             </div>
             <hr>
