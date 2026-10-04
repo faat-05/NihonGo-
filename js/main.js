@@ -353,17 +353,17 @@ function tampilBabKanjiN5() {
         if (bab === 1) {
             namaBab = "Angka & Waktu";
         } else if (bab === 2) {
-            namaBab = "Keluarga & Sekolah";
+            namaBab = "Orang & Keluarga";
         } else if (bab === 3) {
-            namaBab = "Kegiatan Belajar";
-        }
+            namaBab = "Sekolah & Belajar";
+        } else if (bab === 4) {                      namaBab = "Tempat & Arah";           } else if (bab === 5) {                      namaBab = "Aktivitas Sehari-hari"    } else if (bab === 6) {                      namaBab = "Angota Tubuh"             }
 
         htmlBab += `
             <div class="card-content"
                  onclick="tampilLevelBabKanji(${bab})">
 
                 <span class="simbol-kan">
-                    漢
+                    N5
                 </span>
 
                 <div>
