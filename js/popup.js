@@ -611,12 +611,10 @@ function kembaliDariHasil() {
 
     if (popup.dataset.mode === "kanji") {
 
-        // Kembali ke halaman Bab Kanji
-        tampilKanji();
+        tampilBabKanjiN5();
 
     } else {
 
-        // Kembali ke halaman level Kana
         tampilLevelLatihan();
 
     }
