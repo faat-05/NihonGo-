@@ -447,7 +447,9 @@ console.log("SESUDAH AMBIL CAMPURAN");
 
             <div class="judul-header ada-kembali">
 
+              <div class="judul-kiri">
                 <h2>Tebak Huruf</h2>
+              </div>
 
                 <button class="tombol-kembali"
                     onclick="konfirmasiKeluarLatihan()">
