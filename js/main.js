@@ -247,6 +247,7 @@ function tampilLevelLatihan() {
 
             <div class="judul-header ada-kembali">
                 
+              <div class="judul-kiri">
                 <h2>Tebak Kana</h2>
 
                 <button class="tombol-kembali"
@@ -256,6 +257,7 @@ function tampilLevelLatihan() {
                     </span>
                     
                 </button>
+              </div>
 
             </div>
             <hr>
