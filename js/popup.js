@@ -261,7 +261,8 @@ function cekHasilLatihan() {
 
     const popup =
     document.getElementById("popupHasilLatihan");
-
+    popup.dataset.mode = "kana";
+  
 const skor =
     document.getElementById("skorHasil");
 
@@ -546,6 +547,8 @@ function cekHasilLatihanKanji() {
     const popup =
         document.getElementById("popupHasilLatihan");
 
+    popup.dataset.mode = "kanji";
+
     const skor =
         document.getElementById("skorHasil");
 
@@ -573,4 +576,49 @@ function cekHasilLatihanKanji() {
         dataLatihanKanji.length - jawabanBenarKanji;
 
     popup.classList.add("aktif");
+}
+
+
+function ulangiLatihanDariHasil() {
+
+    tutupPopupHasil();
+
+    const popup =
+        document.getElementById("popupHasilLatihan");
+
+    if (popup.dataset.mode === "kanji") {
+
+        mulaiLatihanKanji(
+            babLatihanKanji,
+            levelLatihanKanji
+        );
+
+    } else {
+
+        mulaiLatihanHuruf(levelLatihanAktif);
+
+    }
+
+}
+
+
+function kembaliDariHasil() {
+
+    const popup =
+        document.getElementById("popupHasilLatihan");
+
+    tutupPopupHasil();
+
+    if (popup.dataset.mode === "kanji") {
+
+        // Kembali ke halaman Bab Kanji
+        tampilKanji();
+
+    } else {
+
+        // Kembali ke halaman level Kana
+        tampilLevelLatihan();
+
+    }
+
 }
