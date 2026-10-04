@@ -601,10 +601,10 @@ function pilihJawabanKanji(tombol) {
         document.querySelectorAll("#pilihanKanji button");
 
     semuaPilihan.forEach(btn => {
-        btn.classList.remove("dipilih");
+        btn.classList.remove("terpilih");
     });
 
-    tombol.classList.add("dipilih");
+    tombol.classList.add("terpilih");
 
     jawabanDipilihKanji =
         Number(tombol.dataset.id);
