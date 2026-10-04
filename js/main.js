@@ -715,123 +715,130 @@ function mulaiLatihanKanji(bab, level) {
 }
 
 // TAMPILKAN SOAL KANJI
-function tampilSoalKanji() {
+function mulaiLatihanKanji(bab, level) {
 
-    const soal = dataLatihanKanji[nomorSoalKanji];
+    babLatihanKanji = bab;
+    levelLatihanKanji = level;
 
-    // Pilihan jawaban
-    const dataBab = kanjiN5.filter(item => item.bab === babLatihanKanji);
+    dataLatihanKanji =
+        kanjiN5.filter(item => item.bab === bab);
 
-    let pilihan = [soal];
+    if (level === 1) {
 
-    const pilihanSalah = dataBab
-        .filter(item => item.id !== soal.id)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3);
+        dataLatihanKanji = dataLatihanKanji
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 10);
 
-    pilihan.push(...pilihanSalah);
+    }
 
-    pilihan.sort(() => Math.random() - 0.5);
+    nomorSoalKanji = 0;
+    jawabanBenarKanji = 0;
 
-    let htmlPilihan = "";
-
-    pilihan.forEach((item, index) => {
-
-        htmlPilihan += `
-            <button class="pilihan-jawaban-kanji"
-                onclick="cekJawabanKanji(${item.id}, ${soal.id}, this)">
-
-                <span class="nomor-pilihan">
-                    ${String.fromCharCode(65 + index)}
-                </span>
-
-                <span class="teks-pilihan">
-                    ${item.arti}
-                </span>
-
-            </button>
-        `;
-    });
+    document.getElementById("app").style.display = "none";
 
     document.getElementById("isi").innerHTML = `
 
-        <div class="latihan-kanji">
-
-            <!-- HEADER -->
+        <div class="soal-container">
 
             <div class="judul-header ada-kembali">
 
-                <button class="tombol-kembali"
-                    onclick="keluarLatihanKanji()">
-                    <span class="material-symbols-rounded">
-                        arrow_back
-                    </span>
-                </button>
-
                 <div class="judul-kiri">
 
-                    <h2>Latihan Kanji</h2>
-
-                    <p>
-                        Soal ${nomorSoalKanji + 1} /
-                        ${dataLatihanKanji.length}
-                    </p>
+                    <h2>Tebak Kanji</h2>
 
                 </div>
+
+                <button
+                    class="tombol-kembali"
+                    onclick="konfirmasiKeluarLatihan()">
+
+                    <span class="material-symbols-rounded">
+                        undo
+                    </span>
+
+                </button>
 
             </div>
 
 
-            <!-- PROGRESS -->
+            <div class="content-grid">
 
-            <div class="progress-latihan">
+                <div class="soal-card">
 
-                <div class="progress-latihan-bar">
+                    <div class="soal-header">
 
-                    <div class="progress-latihan-isi"
-                        style="
-                            width: ${((nomorSoalKanji + 1) / dataLatihanKanji.length) * 100}%;
-                        ">
+                        <span class="nomor-soal">
+                            1 / ${dataLatihanKanji.length}
+                        </span>
+
+                        <button
+                            class="tombol-info-soal"
+                            onclick="infoSoalKanji()">
+
+                            <span class="material-symbols-rounded">
+                                info
+                            </span>
+
+                        </button>
+
                     </div>
 
+
+                    <div class="huruf-soal" id="soalKanji">
+
+                        ${dataLatihanKanji[0].kanji}
+
+                    </div>
+
+
+                    <div class="instruksi-soal">
+
+                        Pilih arti yang benar
+
+                    </div>
+
+
+                    <div class="pemisah-soal"></div>
+
+
+                    <div class="pilihan-card" id="pilihanKanji">
+
+                        <!-- pilihan jawaban di sini -->
+
+                    </div>
+
+
+                    <button
+                        id="btnKonfirmasiKanji"
+                        class="tombol-konfirmasi"
+                        style="display: none;"
+                        onclick="konfirmasiJawabanKanji()">
+
+                        Konfirmasi
+
+                    </button>
+
+
+                    <button
+                        id="btnBerikutnyaKanji"
+                        class="tombol-berikutnya"
+                        style="display: none;"
+                        onclick="soalBerikutnyaKanji()">
+
+                        Berikutnya
+
+                    </button>
+
                 </div>
 
             </div>
-
-
-            <!-- SOAL -->
-
-            <div class="soal-kanji">
-
-                <p class="petunjuk-soal">
-                    Apa arti Kanji berikut?
-                </p>
-
-                <div class="kanji-soal">
-                    ${soal.kanji}
-                </div>
-
-            </div>
-
-
-            <!-- PILIHAN -->
-
-            <div class="pilihan-kanji">
-
-                ${htmlPilihan}
-
-            </div>
-
-
-            <!-- FEEDBACK -->
-
-            <div id="feedbackKanji"></div>
 
         </div>
 
     `;
 
-    sembunyiNavbar();
+    tampilkanSoalKanji();
+
     scrollAtas();
 }
 
