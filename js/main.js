@@ -189,7 +189,7 @@ function tampilLatihan(tombol = null) {
                     <span class="panah-latihan">›</span>
                 </div>
 
-                <div class="card-content">
+                <div class="card-content" onclick="tampilLevelKanji()">
                     <span class="simbol-kan">
                         漢
                     </span>
@@ -229,6 +229,96 @@ function tampilLatihan(tombol = null) {
           </div>
 
       </div>
+
+    `;
+
+    tampilNavbar();
+    scrollAtas();
+}
+// LEVEL KANJI LATIHAN
+function tampilLevelKanji() {
+
+    document.getElementById("isi").innerHTML = `
+
+        <div class="menu-latihan">
+
+            <div class="judul-header">
+                <span class="material-symbols-rounded logo-halaman">
+                    school
+                </span>
+                <h2>Kanji</h2>
+            </div>
+
+            <div class="content-grid">
+
+                <div class="card-content-top">
+                    <span class="simbol-kan">
+                        漢
+                    </span>
+
+                    <div>
+                        <h3>Kanji N5</h3>
+                        <p>Kanji tingkat dasar</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+                </div>
+
+                <div class="card-content">
+                    <span class="simbol-kan">
+                        N4
+                    </span>
+
+                    <div>
+                        <h3>Kanji N4</h3>
+                        <p>Belum tersedia</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+                </div>
+
+                <div class="card-content">
+                    <span class="simbol-kan">
+                        N3
+                    </span>
+
+                    <div>
+                        <h3>Kanji N3</h3>
+                        <p>Belum tersedia</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+                </div>
+
+                <div class="card-content">
+                    <span class="simbol-kan">
+                        N2
+                    </span>
+
+                    <div>
+                        <h3>Kanji N2</h3>
+                        <p>Belum tersedia</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+                </div>
+
+                <div class="card-content">
+                    <span class="simbol-kan">
+                        N1
+                    </span>
+
+                    <div>
+                        <h3>Kanji N1</h3>
+                        <p>Belum tersedia</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+                </div>
+
+            </div>
+
+        </div>
 
     `;
 
