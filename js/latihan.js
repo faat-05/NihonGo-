@@ -20,6 +20,7 @@ let babLatihanKanji = 0;
 let levelLatihanKanji = 0;
 let jawabanDipilihKanji = null;
 let sudahDikonfirmasiKanji = false;
+let hasilSesiKanji = [];
 
 // SISTEM PILIHAN JAWABAN TEBAK HURUF
 function pilihJawaban(tombol) {
@@ -659,6 +660,26 @@ function konfirmasiJawabanKanji() {
 
     }
 
+    // Simpan hasil soal
+    const tombolDipilih =
+        document.querySelector(
+            `#pilihanKanji button[data-id="${jawabanDipilihKanji}"]`
+        );
+
+    hasilSesiKanji.push({
+
+        soal: soal.kanji,
+
+        jawaban: tombolDipilih
+            ? tombolDipilih.textContent
+            : "-",
+
+        jawabanBenar: soal.arti,
+
+        benar: jawabanDipilihKanji === soal.id
+
+    });
+
     document.getElementById("btnKonfirmasiKanji").style.display =
         "none";
 
@@ -670,14 +691,13 @@ function soalBerikutnyaKanji() {
 
     nomorSoalKanji++;
 
-    // Masih ada soal
     if (nomorSoalKanji < dataLatihanKanji.length) {
 
         tampilkanSoalKanji();
 
     } else {
 
-        tampilkanHasilKanji();
+        cekHasilLatihanKanji();
 
     }
 }
