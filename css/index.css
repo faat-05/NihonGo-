@@ -1122,7 +1122,52 @@ body{
     cursor: pointer;
 }
 
-
+/* POPUP LVL LATIHAN KANJI */
+.level-kanji-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.level-kanji-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    cursor: pointer;
+}
+.level-kanji-item:active {
+    background: var(--merah-muda);
+}
+.level-kanji-nomor {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--merah-muda);
+    color: var(--merah-utama);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.level-kanji-item div:nth-child(2) {
+    flex: 1;
+}
+.level-kanji-item h3 {
+    margin: 0 0 4px;
+}
+.level-kanji-item p {
+    margin: 0;
+    color: var(--abu);
+    font-size: 13px;
+}
+.level-kanji-item > span {
+    font-size: 24px;
+    color: var(--abu);
+}
 
 /*=====================================
             ANIMASI
