@@ -539,3 +539,38 @@ function tutupPopupPet() {
 
     popup.style.display = "none";
 }
+
+// POPUP CEK HASIL LATIHAN KANJI
+function cekHasilLatihanKanji() {
+
+    const popup =
+        document.getElementById("popupHasilLatihan");
+
+    const skor =
+        document.getElementById("skorHasil");
+
+    const jumlahBenar =
+        document.getElementById("jumlahBenar");
+
+    const jumlahSalah =
+        document.getElementById("jumlahSalah");
+
+    const pesanHasil =
+        popup.querySelector(".popup-hasil-pesan");
+
+    if (pesanHasil) {
+        pesanHasil.innerText =
+            `Kamu sudah menyelesaikan ${dataLatihanKanji.length} soal.`;
+    }
+
+    skor.innerText =
+        `${jawabanBenarKanji} / ${dataLatihanKanji.length}`;
+
+    jumlahBenar.innerText =
+        jawabanBenarKanji;
+
+    jumlahSalah.innerText =
+        dataLatihanKanji.length - jawabanBenarKanji;
+
+    popup.classList.add("aktif");
+}
