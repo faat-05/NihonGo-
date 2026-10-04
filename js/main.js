@@ -406,6 +406,77 @@ function tampilBabKanjiN5() {
     sembunyiNavbar();
     scrollAtas();
 }
+// TAMPIL LVL BAB KANJI
+function tampilLevelBabKanji(bab) {
+
+    const dataBab = kanjiN5.filter(item => item.bab === bab);
+
+    let namaBab = `Bab ${bab}`;
+
+    if (bab === 1) {
+        namaBab = "Angka & Waktu";
+    } else if (bab === 2) {
+        namaBab = "Orang & Keluarga";
+    } else if (bab === 3) {
+        namaBab = "Sekolah & Belajar";
+    } else if (bab === 4) {
+        namaBab = "Tempat & Arah";
+    } else if (bab === 5) {
+        namaBab = "Aktivitas Sehari-hari";
+    } else if (bab === 6) {
+        namaBab = "Anggota Tubuh";
+    }
+
+    document.getElementById("isi").innerHTML = `
+
+        <div class="menu-latihan">
+
+            <div class="judul-header ada-kembali">
+
+                <div class="judul-kiri">
+                    <h2>Bab ${bab}</h2>
+                    <p>${namaBab} · ${dataBab.length} Kanji</p>
+                </div>
+
+                <button class="tombol-kembali"
+                    onclick="tampilBabKanjiN5()">
+
+                    <span class="material-symbols-rounded">
+                        undo
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <div class="card-content"
+                    onclick="tampilPopupLevelKanji(${bab})">
+
+                    <span class="simbol-kan">
+                        N5
+                    </span>
+
+                    <div>
+                        <h3>Pilih Level Latihan</h3>
+                        <p>3 level tersedia</p>
+                    </div>
+
+                    <span class="panah-latihan">›</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+    sembunyiNavbar();
+    scrollAtas();
+}
 
 // POPUP LVL BAB KANJI
 function tampilPopupLevelKanji(bab) {
@@ -487,83 +558,6 @@ function tampilPopupLevelKanji(bab) {
 
     `);
 }
-
-function tutupPopupLevelKanji() {
-
-    const popup = document.getElementById("popupLevelKanji");
-
-    if (popup) {
-        popup.remove();
-    }
-
-}
-
-// TAMPIL POPUP LEVEL KANJI
-function tampilPopupLevelKanji(bab) {
-
-    document.getElementById("isi").insertAdjacentHTML("beforeend", `
-
-        <div class="popup-level" id="popupLevelKanji">
-
-            <div class="popup-level-content">
-
-                <button class="popup-level-close"
-                    onclick="tutupPopupLevelKanji()">
-                    ×
-                </button>
-
-                <div class="popup-level-icon">
-                    🎯
-                </div>
-
-                <h2>Pilih Level</h2>
-
-                <div class="level-kanji-list">
-
-                    <div class="level-kanji-item">
-                        <div class="level-kanji-nomor">1</div>
-
-                        <div>
-                            <h3>Level 1</h3>
-                            <p>Kanji → Arti · 10 Soal</p>
-                        </div>
-
-                        <span>›</span>
-                    </div>
-
-
-                    <div class="level-kanji-item">
-                        <div class="level-kanji-nomor">2</div>
-
-                        <div>
-                            <h3>Level 2</h3>
-                            <p>Kanji → Bacaan · 20 Soal</p>
-                        </div>
-
-                        <span>›</span>
-                    </div>
-
-
-                    <div class="level-kanji-item">
-                        <div class="level-kanji-nomor">3</div>
-
-                        <div>
-                            <h3>Level 3</h3>
-                            <p>Campuran · 20 Soal</p>
-                        </div>
-
-                        <span>›</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `);
-}
-
 
 function tutupPopupLevelKanji() {
 
