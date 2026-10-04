@@ -665,3 +665,19 @@ function konfirmasiJawabanKanji() {
     document.getElementById("btnBerikutnyaKanji").style.display =
         "block";
 }
+
+function soalBerikutnyaKanji() {
+
+    nomorSoalKanji++;
+
+    // Kalau masih ada soal
+    if (nomorSoalKanji < dataLatihanKanji.length) {
+
+        tampilkanSoalKanji();
+
+    } else {
+
+        // Belum kita buat hasilnya
+        console.log("Latihan selesai!");
+    }
+}
