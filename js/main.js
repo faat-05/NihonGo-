@@ -243,9 +243,7 @@ function tampilLevelKanji() {
         <div class="menu-latihan">
 
             <div class="judul-header ada-kembali">
-                <span class="material-symbols-rounded logo-halaman">
-                    school
-                </span>
+
                 <h2>Kanji</h2>
                 
                 <button class="tombol-kembali"
@@ -382,12 +380,15 @@ function tampilBabKanjiN5() {
 
         <div class="menu-latihan">
 
-            <div class="judul-header">
-                <span class="material-symbols-rounded logo-halaman">
-                    school
-                </span>
+            <div class="judul-header ada-kembali">
 
                 <h2>Kanji N5</h2>
+                
+                <button class="tombol-kembali"
+                    onclick="tampilLevelKanji()">
+                    <span class="material-symbols-rounded">
+                        undo
+                    </span>
             </div>
 
             <div class="content-grid">
