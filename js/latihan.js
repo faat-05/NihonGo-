@@ -18,6 +18,8 @@ let nomorSoalKanji = 0;
 let jawabanBenarKanji = 0;
 let babLatihanKanji = 0;
 let levelLatihanKanji = 0;
+let jawabanDipilihKanji = null;
+let sudahDikonfirmasiKanji = false;
 
 // SISTEM PILIHAN JAWABAN TEBAK HURUF
 function pilihJawaban(tombol) {
@@ -527,60 +529,139 @@ function ambilSoalCampuran(dataHiragana, dataKatakana, jumlah) {
     return hasilAkhir;
 }
 
+// LATIHAN KANJI
+function tampilkanSoalKanji() {
 
-function cekJawabanKanji(jawabanId, soalId, tombol) {
+    const soal = dataLatihanKanji[nomorSoalKanji];
 
-    const semuaTombol = document.querySelectorAll(
-        ".pilihan-jawaban-kanji"
+    const dataBab = kanjiN5.filter(
+        item => item.bab === babLatihanKanji
     );
 
-    // Cegah memilih jawaban lagi
-    semuaTombol.forEach(btn => {
-        btn.disabled = true;
+    // Ambil 3 jawaban salah
+    const pilihanSalah = dataBab
+        .filter(item => item.id !== soal.id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+    // Gabungkan jawaban benar + salah
+    let pilihan = [
+        soal,
+        ...pilihanSalah
+    ];
+
+    // Acak pilihan
+    pilihan.sort(() => Math.random() - 0.5);
+
+    const container =
+        document.getElementById("pilihanKanji");
+
+    container.innerHTML = "";
+
+    pilihan.forEach(item => {
+
+        const tombol = document.createElement("button");
+
+        tombol.textContent = item.arti;
+
+        tombol.dataset.id = item.id;
+
+        tombol.onclick = function () {
+            pilihJawabanKanji(this);
+        };
+
+        container.appendChild(tombol);
+
     });
 
-    const benar = jawabanId === soalId;
+    // Tampilkan Kanji
+    document.getElementById("soalKanji").textContent =
+        soal.kanji;
 
-    if (benar) {
-        jawabanBenarKanji++;
-    }
+    // Update nomor soal
+    document.querySelector(".nomor-soal").textContent =
+        `${nomorSoalKanji + 1} / ${dataLatihanKanji.length}`;
 
-    // Tandai jawaban
-    semuaTombol.forEach(btn => {
+    // Reset pilihan
+    jawabanDipilihKanji = null;
+    sudahDikonfirmasiKanji = false;
 
-        const onclick = btn.getAttribute("onclick");
+    document.getElementById("btnKonfirmasiKanji").style.display =
+        "none";
 
-        if (onclick.includes(`, ${soalId}`)) {
-            // nanti kita cari jawaban benar
+    document.getElementById("btnBerikutnyaKanji").style.display =
+        "none";
+}
+
+function pilihJawabanKanji(tombol) {
+
+    if (sudahDikonfirmasiKanji) return;
+
+    const semuaPilihan =
+        document.querySelectorAll("#pilihanKanji button");
+
+    semuaPilihan.forEach(btn => {
+        btn.classList.remove("dipilih");
+    });
+
+    tombol.classList.add("dipilih");
+
+    jawabanDipilihKanji =
+        Number(tombol.dataset.id);
+
+    document.getElementById("btnKonfirmasiKanji").style.display =
+        "block";
+}
+
+function konfirmasiJawabanKanji() {
+
+    if (jawabanDipilihKanji === null) return;
+
+    if (sudahDikonfirmasiKanji) return;
+
+    sudahDikonfirmasiKanji = true;
+
+    const soal = dataLatihanKanji[nomorSoalKanji];
+
+    const semuaPilihan =
+        document.querySelectorAll("#pilihanKanji button");
+
+    semuaPilihan.forEach(tombol => {
+
+        const id =
+            Number(tombol.dataset.id);
+
+        tombol.disabled = true;
+
+        // Jawaban benar
+        if (id === soal.id) {
+
+            tombol.classList.add("jawaban-benar");
+
         }
+
+        // Jawaban yang dipilih tapi salah
+        if (
+            id === jawabanDipilihKanji &&
+            id !== soal.id
+        ) {
+
+            tombol.classList.add("jawaban-salah");
+
+        }
+
     });
 
-    if (benar) {
+    // Tambahkan skor jika benar
+    if (jawabanDipilihKanji === soal.id) {
 
-        tombol.classList.add("jawaban-benar");
-
-        document.getElementById("feedbackKanji").innerHTML = `
-            <div class="feedback-kanji benar">
-                <strong>✓ Benar!</strong>
-                <button onclick="soalBerikutnyaKanji()">
-                    Lanjut
-                </button>
-            </div>
-        `;
-
-    } else {
-
-        tombol.classList.add("jawaban-salah");
-
-        document.getElementById("feedbackKanji").innerHTML = `
-            <div class="feedback-kanji salah">
-                <strong>✕ Kurang tepat</strong>
-                <button onclick="soalBerikutnyaKanji()">
-                    Lanjut
-                </button>
-            </div>
-        `;
+        jawabanBenarKanji++;
 
     }
 
+    document.getElementById("btnKonfirmasiKanji").style.display =
+        "none";
+
+    document.getElementById("btnBerikutnyaKanji").style.display =
+        "block";
 }
