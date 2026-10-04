@@ -253,7 +253,7 @@ function tampilLevelKanji() {
 
                 <div class="card-content-top">
                     <span class="simbol-kan">
-                        漢
+                        N5
                     </span>
 
                     <div>
