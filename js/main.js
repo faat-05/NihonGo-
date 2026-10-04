@@ -360,7 +360,7 @@ function tampilBabKanjiN5() {
 
         htmlBab += `
             <div class="card-content"
-                 onclick="tampilLevelBabKanji(${bab})">
+                 onclick="tampilPopupLevelKanji(${bab})">
 
                 <span class="simbol-kan">
                     N5
