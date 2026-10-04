@@ -670,14 +670,14 @@ function soalBerikutnyaKanji() {
 
     nomorSoalKanji++;
 
-    // Kalau masih ada soal
+    // Masih ada soal
     if (nomorSoalKanji < dataLatihanKanji.length) {
 
         tampilkanSoalKanji();
 
     } else {
 
-        // Belum kita buat hasilnya
-        console.log("Latihan selesai!");
+        tampilkanHasilKanji();
+
     }
 }
