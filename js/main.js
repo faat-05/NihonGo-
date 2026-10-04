@@ -692,6 +692,149 @@ function tutupPopupLevelKanjiDetail() {
     }
 }
 
+// MULAI LATIHAN KANJI
+function mulaiLatihanKanji(bab, level) {
+
+    babLatihanKanji = bab;
+    levelLatihanKanji = level;
+
+    // Ambil Kanji sesuai bab
+    dataLatihanKanji = kanjiN5.filter(item => item.bab === bab);
+
+    // Level 1 = 10 soal
+    if (level === 1) {
+        dataLatihanKanji = dataLatihanKanji
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 10);
+    }
+
+    nomorSoalKanji = 0;
+    jawabanBenarKanji = 0;
+
+    tampilSoalKanji();
+}
+
+// TAMPILKAN SOAL KANJI
+function tampilSoalKanji() {
+
+    const soal = dataLatihanKanji[nomorSoalKanji];
+
+    // Pilihan jawaban
+    const dataBab = kanjiN5.filter(item => item.bab === babLatihanKanji);
+
+    let pilihan = [soal];
+
+    const pilihanSalah = dataBab
+        .filter(item => item.id !== soal.id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+    pilihan.push(...pilihanSalah);
+
+    pilihan.sort(() => Math.random() - 0.5);
+
+    let htmlPilihan = "";
+
+    pilihan.forEach((item, index) => {
+
+        htmlPilihan += `
+            <button class="pilihan-jawaban-kanji"
+                onclick="cekJawabanKanji(${item.id}, ${soal.id}, this)">
+
+                <span class="nomor-pilihan">
+                    ${String.fromCharCode(65 + index)}
+                </span>
+
+                <span class="teks-pilihan">
+                    ${item.arti}
+                </span>
+
+            </button>
+        `;
+    });
+
+    document.getElementById("isi").innerHTML = `
+
+        <div class="latihan-kanji">
+
+            <!-- HEADER -->
+
+            <div class="judul-header ada-kembali">
+
+                <button class="tombol-kembali"
+                    onclick="keluarLatihanKanji()">
+                    <span class="material-symbols-rounded">
+                        arrow_back
+                    </span>
+                </button>
+
+                <div class="judul-kiri">
+
+                    <h2>Latihan Kanji</h2>
+
+                    <p>
+                        Soal ${nomorSoalKanji + 1} /
+                        ${dataLatihanKanji.length}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-latihan">
+
+                <div class="progress-latihan-bar">
+
+                    <div class="progress-latihan-isi"
+                        style="
+                            width: ${((nomorSoalKanji + 1) / dataLatihanKanji.length) * 100}%;
+                        ">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOAL -->
+
+            <div class="soal-kanji">
+
+                <p class="petunjuk-soal">
+                    Apa arti Kanji berikut?
+                </p>
+
+                <div class="kanji-soal">
+                    ${soal.kanji}
+                </div>
+
+            </div>
+
+
+            <!-- PILIHAN -->
+
+            <div class="pilihan-kanji">
+
+                ${htmlPilihan}
+
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div id="feedbackKanji"></div>
+
+        </div>
+
+    `;
+
+    sembunyiNavbar();
+    scrollAtas();
+}
+
 // Tampilan Level Latihan Kana
 function tampilLevelLatihan() {
 
