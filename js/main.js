@@ -243,8 +243,9 @@ function tampilLevelKanji() {
         <div class="menu-latihan">
 
             <div class="judul-header ada-kembali">
-
+              <div class="judul-kiri">
                 <h2>Kanji</h2>
+              </div>
                 
                 <button class="tombol-kembali"
                     onclick="tampilLatihan()">
@@ -329,7 +330,7 @@ function tampilLevelKanji() {
 
     `;
 
-    tampilNavbar();
+    sembunyiNavbar();
     scrollAtas();
 }
 
@@ -381,8 +382,9 @@ function tampilBabKanjiN5() {
         <div class="menu-latihan">
 
             <div class="judul-header ada-kembali">
-
+               <div class="judul-kiri">
                 <h2>Kanji N5</h2>
+               </div>
                 
                 <button class="tombol-kembali"
                     onclick="tampilLevelKanji()">
@@ -401,7 +403,7 @@ function tampilBabKanjiN5() {
 
     `;
 
-    tampilNavbar();
+    sembunyiNavbar();
     scrollAtas();
 }
 
