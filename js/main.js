@@ -719,7 +719,8 @@ function mulaiLatihanKanji(bab, level) {
 
     babLatihanKanji = bab;
     levelLatihanKanji = level;
-
+    hasilSesiKanji = [];
+  
     dataLatihanKanji =
         kanjiN5.filter(item => item.bab === bab);
 
@@ -838,7 +839,6 @@ function mulaiLatihanKanji(bab, level) {
     `;
 
     tampilkanSoalKanji();
-
     scrollAtas();
 }
 
