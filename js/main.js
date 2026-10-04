@@ -242,11 +242,20 @@ function tampilLevelKanji() {
 
         <div class="menu-latihan">
 
-            <div class="judul-header">
+            <div class="judul-header ada-kembali">
                 <span class="material-symbols-rounded logo-halaman">
                     school
                 </span>
                 <h2>Kanji</h2>
+                
+                <button class="tombol-kembali"
+                    onclick="tampilLatihan()">
+                    <span class="material-symbols-rounded">
+                        undo
+                    </span>
+                    
+                </button>
+                
             </div>
 
             <div class="content-grid">
@@ -419,7 +428,6 @@ function tampilLevelLatihan() {
                 </button>
 
             </div>
-            <hr>
 
             <div class="content-grid">
 
