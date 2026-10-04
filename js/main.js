@@ -53,7 +53,7 @@ setTimeout(() => {
     document.getElementById("splash-screen").style.display = "none";
     document.getElementById("app").style.display = "block";
     document.getElementById("bottomNav").style.display = "flex";
-}, 2500);
+}, 3000);
 
 // TAMPILAN MATERI
 function tampilMateri(tombol) {
