@@ -569,6 +569,129 @@ function tutupPopupLevelKanji() {
 
 }
 
+// POPUP DETAIL LEVEL KANJI
+function popupLevelKanji(bab, level) {
+
+    let judul = "";
+    let jumlahSoal = 0;
+    let materi = "";
+
+    if (level === 1) {
+
+        judul = "Level 1 — Dasar";
+        jumlahSoal = 10;
+
+        materi = `
+            <p>• Kanji → Arti</p>
+            <p>• 10 soal Kanji</p>
+        `;
+
+    } else if (level === 2) {
+
+        judul = "Level 2 — Menengah";
+        jumlahSoal = 20;
+
+        materi = `
+            <p>• Kanji → Bacaan</p>
+            <p>• 20 soal Kanji</p>
+        `;
+
+    } else {
+
+        judul = "Level 3 — Lanjutan";
+        jumlahSoal = 20;
+
+        materi = `
+            <p>• Kanji → Arti</p>
+            <p>• Kanji → Bacaan</p>
+            <p>• Arti → Kanji</p>
+            <p>• Bacaan → Kanji</p>
+            <p>• 20 soal campuran</p>
+        `;
+    }
+
+    document.getElementById("isi").insertAdjacentHTML("beforeend", `
+
+        <div class="popup-level" id="popupLevelKanjiDetail">
+
+            <div class="popup-level-content">
+
+                <button class="popup-level-close"
+                    onclick="tutupPopupLevelKanjiDetail()">
+                    ×
+                </button>
+
+                <div class="popup-level-icon">
+                    🎯
+                </div>
+
+                <h2>${judul}</h2>
+
+                <div class="info-jumlah-soal">
+                    <span>📝</span>
+                    <strong>${jumlahSoal} Soal</strong>
+                </div>
+
+                <div class="info-latihan">
+
+                    <h3>📚 Materi</h3>
+
+                    <div class="materi-level">
+                        ${materi}
+                    </div>
+
+                </div>
+
+                <div class="info-latihan">
+
+                    <h3>🧠 Penguasaan</h3>
+
+                    <p>
+                        Jawaban benar akan meningkatkan
+                        penguasaan Kanji.
+                    </p>
+
+                    <p>
+                        Kanji yang masih lemah akan lebih
+                        sering muncul pada latihan berikutnya.
+                    </p>
+
+                </div>
+
+                <div class="info-latihan">
+
+                    <h3>🪙 Reward</h3>
+
+                    <p>
+                        Jawab pertanyaan dengan benar
+                        untuk mendapatkan poin.
+                    </p>
+
+                </div>
+
+                <button class="tombol-mulai"
+                    onclick="mulaiLatihanKanji(${bab}, ${level})">
+                    Mulai Latihan
+                </button>
+
+            </div>
+
+        </div>
+
+    `);
+}
+
+
+// TUTUP POPUP DETAIL LEVEL
+function tutupPopupLevelKanjiDetail() {
+
+    const popup = document.getElementById("popupLevelKanjiDetail");
+
+    if (popup) {
+        popup.remove();
+    }
+}
+
 // Tampilan Level Latihan Kana
 function tampilLevelLatihan() {
 
