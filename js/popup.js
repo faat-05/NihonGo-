@@ -543,13 +543,27 @@ function keluarLatihan() {
 
     tutupPopupKeluar();
 
-    // Reset latihan
+    // Kalau sedang latihan Kanji
+    if (sedangLatihanKanji) {
+
+        // Reset latihan Kanji
+        nomorSoalKanji = 0;
+        jawabanBenarKanji = 0;
+        jawabanDipilihKanji = null;
+        sudahDikonfirmasiKanji = false;
+        hasilSesiKanji = [];
+
+        tampilBabKanjiN5();
+
+        return;
+    }
+
+    // Kalau sedang latihan Kana
     soalSekarang = 0;
     skorLatihan = 0;
     jawabanDipilih = null;
     sudahDikonfirmasi = false;
 
-    // Kembali ke level latihan
     tampilLevelLatihan();
 }
 
