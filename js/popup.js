@@ -505,7 +505,7 @@ function kembaliKeHasilLatihan() {
     `;
 }
 
-//  POPUP INFO SOAL CARD 
+//  POPUP INFO SOAL CARD KANA
 function infoSoal() {
     document
         .getElementById("popupInfoSoal")
@@ -518,7 +518,7 @@ function tutupInfoSoal() {
         .classList.remove("aktif");
 }
 
-// POPUP PERINGATAN KELUAR LATIHAN 
+// POPUP PERINGATAN KELUAR LATIHAN KANA
 function konfirmasiKeluarLatihan() {
 
     // Belum mengerjakan soal
@@ -801,4 +801,29 @@ function infoSoalKanji() {
     `;
 
     popup.classList.add("aktif");
+}
+
+function kembaliDariLatihanKanji() {
+
+    // Belum mengerjakan soal sama sekali
+    if (!sudahDikonfirmasiKanji) {
+
+        tampilBabKanjiN5();
+        return;
+
+    }
+
+    // Sudah mengerjakan soal
+    document
+        .getElementById("popupKeluarLatihan")
+        .classList.add("aktif");
+
+}
+
+function tutupPopupKeluar() {
+
+    document
+        .getElementById("popupKeluarLatihan")
+        .classList.remove("aktif");
+
 }
