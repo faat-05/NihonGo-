@@ -567,6 +567,9 @@ function tutupPopupPet() {
     popup.style.display = "none";
 }
 
+/////////////////////////////////
+// POPUP TENTANG LATIHAN KANJI //
+/////////////////////////////////
 // POPUP CEK HASIL LATIHAN KANJI
 function cekHasilLatihanKanji() {
 
@@ -645,4 +648,157 @@ function kembaliDariHasil() {
 
     }
 
+}
+
+function infoSoalKanji() {
+
+    let isiInstruksi = "";
+
+    if (levelLatihanKanji === 1) {
+
+        isiInstruksi = `
+            <p>
+                Pilih arti yang paling tepat untuk Kanji
+                yang ditampilkan.
+            </p>
+
+            <div class="info-langkah">
+
+                <div>
+                    <span>1</span>
+                    <p>Pilih salah satu arti yang menurutmu benar.</p>
+                </div>
+
+                <div>
+                    <span>2</span>
+                    <p>Tekan tombol <b>Konfirmasi</b>.</p>
+                </div>
+
+                <div>
+                    <span>3</span>
+                    <p>
+                        Lihat hasil jawabanmu, lalu lanjutkan
+                        ke soal berikutnya.
+                    </p>
+                </div>
+
+            </div>
+        `;
+
+    } else if (levelLatihanKanji === 2) {
+
+        isiInstruksi = `
+            <p>
+                Pilih bacaan yang paling tepat untuk Kanji
+                yang ditampilkan.
+            </p>
+
+            <div class="info-langkah">
+
+                <div>
+                    <span>1</span>
+                    <p>Pilih salah satu bacaan yang menurutmu benar.</p>
+                </div>
+
+                <div>
+                    <span>2</span>
+                    <p>Tekan tombol <b>Konfirmasi</b>.</p>
+                </div>
+
+                <div>
+                    <span>3</span>
+                    <p>
+                        Lihat hasil jawabanmu, lalu lanjutkan
+                        ke soal berikutnya.
+                    </p>
+                </div>
+
+            </div>
+        `;
+
+    } else {
+
+        isiInstruksi = `
+            <p>
+                Jawab soal sesuai petunjuk yang ditampilkan.
+                Pada level ini, arah soal dapat berubah-ubah.
+            </p>
+
+            <div class="info-langkah">
+
+                <div>
+                    <span>1</span>
+                    <p>
+                        Perhatikan Kanji, arti, atau bacaan
+                        yang ditampilkan.
+                    </p>
+                </div>
+
+                <div>
+                    <span>2</span>
+                    <p>
+                        Pilih jawaban yang paling tepat,
+                        lalu tekan <b>Konfirmasi</b>.
+                    </p>
+                </div>
+
+                <div>
+                    <span>3</span>
+                    <p>
+                        Lihat hasil jawabanmu, lalu lanjutkan
+                        ke soal berikutnya.
+                    </p>
+                </div>
+
+            </div>
+        `;
+    }
+
+
+    const popup =
+        document.getElementById("popupInfoSoal");
+
+    const content =
+        popup.querySelector(".popup-info-content");
+
+
+    content.innerHTML = `
+
+        <button
+            class="tutup-info"
+            onclick="tutupInfoSoal()">
+
+            <span class="material-symbols-rounded">
+                close
+            </span>
+
+        </button>
+
+
+        <div class="info-icon">
+
+            <span class="material-symbols-rounded">
+                info
+            </span>
+
+        </div>
+
+
+        <h2>Cara Latihan</h2>
+
+
+        ${isiInstruksi}
+
+
+        <button
+            class="tombol-mengerti"
+            onclick="tutupInfoSoal()">
+
+            Mengerti
+
+        </button>
+
+    `;
+
+    popup.classList.add("aktif");
 }
