@@ -697,6 +697,8 @@ function mulaiLatihanKanji(bab, level) {
 
     babLatihanKanji = bab;
     levelLatihanKanji = level;
+    sedangLatihanKanji = true;
+    hasilSesiKanji = [];
 
     // Ambil Kanji sesuai bab
     dataLatihanKanji = kanjiN5.filter(item => item.bab === bab);
@@ -956,7 +958,8 @@ function mulaiLatihanHuruf(level = 1) {
     jawabanDipilih = null;
     sudahDikonfirmasi = false;
     hasilSesi = [];
-
+    sedangLatihanKanji = false;
+    
     // Siapkan soal berdasarkan level
     if (level === 1) {
 
