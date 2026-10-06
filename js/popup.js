@@ -405,9 +405,21 @@ function tampilkanDetailHasil() {
 // FUNGSI KEMBALI KE HASIL LATIHAN
 function kembaliKeHasilLatihan() {
 
-    const popup = document.getElementById("popupHasilLatihan");
+    const popup =
+        document.getElementById("popupHasilLatihan");
 
-    const content = popup.querySelector(".popup-hasil-content");
+    const content =
+        popup.querySelector(".popup-hasil-content");
+
+    const jumlahSoal =
+        sedangLatihanKanji
+            ? dataLatihanKanji.length
+            : jumlahSoalLatihan;
+
+    const skor =
+        sedangLatihanKanji
+            ? jawabanBenarKanji
+            : skorLatihan;
 
     content.innerHTML = `
 
@@ -418,38 +430,51 @@ function kembaliKeHasilLatihan() {
         <h2>Latihan Selesai!</h2>
 
         <p class="popup-hasil-pesan">
-            Kamu sudah menyelesaikan ${jumlahSoalLatihan} soal.
+            Kamu sudah menyelesaikan ${jumlahSoal} soal.
         </p>
 
         <div class="skor-hasil">
+
             <span>Skor Kamu</span>
+
             <strong id="skorHasil">
-                ${skorLatihan} / ${jumlahSoalLatihan}
+                ${skor} / ${jumlahSoal}
             </strong>
+
         </div>
 
         <div class="hasil-statistik">
 
             <div class="statistik benar">
+
                 <span>✓</span>
 
                 <div>
+
                     <strong id="jumlahBenar">
-                        ${skorLatihan}
+                        ${skor}
                     </strong>
+
                     <small>Benar</small>
+
                 </div>
+
             </div>
 
             <div class="statistik salah">
+
                 <span>×</span>
 
                 <div>
+
                     <strong id="jumlahSalah">
-                        ${jumlahSoalLatihan - skorLatihan}
+                        ${jumlahSoal - skor}
                     </strong>
+
                     <small>Salah</small>
+
                 </div>
+
             </div>
 
         </div>
@@ -464,13 +489,13 @@ function kembaliKeHasilLatihan() {
 
             <button
                 class="tombol-latihan-lagi"
-                onclick="tutupPopupHasil(); mulaiLatihanHuruf(levelLatihanAktif);">
+                onclick="ulangiLatihanDariHasil()">
                 Latihan Lagi
             </button>
 
             <button
                 class="tombol-kembali-hasil"
-                onclick="tutupPopupHasil(); tampilLevelLatihan();">
+                onclick="kembaliDariHasil()">
                 Kembali
             </button>
 
