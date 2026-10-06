@@ -300,14 +300,16 @@ function tutupPopupHasil() {
 function tampilkanDetailHasil() {
 
     const popup =
-        document.getElementById(
-            "popupHasilLatihan"
-        );
+        document.getElementById("popupHasilLatihan");
 
     const content =
-        popup.querySelector(
-            ".popup-hasil-content"
-        );
+        popup.querySelector(".popup-hasil-content");
+
+
+    const dataHasil =
+        sedangLatihanKanji
+            ? hasilSesiKanji
+            : hasilSesi;
 
 
     content.innerHTML = `
@@ -325,7 +327,7 @@ function tampilkanDetailHasil() {
 
         <div class="detail-jawaban-list">
 
-            ${hasilSesi.map((hasil, index) => `
+            ${dataHasil.map((hasil, index) => `
 
                 <div class="
                     detail-jawaban
@@ -374,7 +376,6 @@ function tampilkanDetailHasil() {
                                 <span class="detail-status">
                                     ✕ Jawaban salah
                                 </span>
-
                             `
                         }
 
