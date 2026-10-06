@@ -21,6 +21,7 @@ let levelLatihanKanji = 0;
 let jawabanDipilihKanji = null;
 let sudahDikonfirmasiKanji = false;
 let hasilSesiKanji = [];
+let sedangLatihanKanji = false;
 
 // SISTEM PILIHAN JAWABAN TEBAK HURUF
 function pilihJawaban(tombol) {
