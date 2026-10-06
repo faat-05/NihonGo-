@@ -754,7 +754,7 @@ function mulaiLatihanKanji(bab, level) {
 
                 <button
                     class="tombol-kembali"
-                    onclick="konfirmasiKeluarLatihan()">
+                    onclick="kembaliDariLatihanKanji()">
 
                     <span class="material-symbols-rounded">
                         undo
@@ -861,7 +861,7 @@ function tampilLevelLatihan() {
               </div>
 
                 <button class="tombol-kembali"
-                    onclick="kembaliDariLatihanKanji()">
+                    onclick="tampilLatihan()">
                     <span class="material-symbols-rounded">
                         undo
                     </span>
@@ -948,32 +948,6 @@ function tampilLevelLatihan() {
     sembunyiNavbar();
     scrollAtas();
 }
-
-function kembaliDariLatihanKanji() {
-
-    // Belum mengerjakan soal sama sekali
-    if (!sudahDikonfirmasiKanji) {
-
-        tampilBabKanjiN5();
-        return;
-
-    }
-
-    // Sudah mengerjakan soal
-    document
-        .getElementById("popupKeluarLatihan")
-        .classList.add("aktif");
-
-}
-
-function tutupPopupKeluar() {
-
-    document
-        .getElementById("popupKeluarLatihan")
-        .classList.remove("aktif");
-
-}
-
 // TAMPILAN SOAL KANA LEVEL 1 - 3
 function mulaiLatihanHuruf(level = 1) {
 
