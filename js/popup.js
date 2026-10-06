@@ -805,15 +805,15 @@ function infoSoalKanji() {
 
 function kembaliDariLatihanKanji() {
 
-    // Belum mengerjakan soal sama sekali
-    if (!sudahDikonfirmasiKanji) {
+    // Kalau belum pernah menyelesaikan 1 soal
+    if (hasilSesiKanji.length === 0) {
 
         tampilBabKanjiN5();
-        return;
 
+        return;
     }
 
-    // Sudah mengerjakan soal
+    // Kalau sudah pernah mengerjakan soal
     document
         .getElementById("popupKeluarLatihan")
         .classList.add("aktif");
