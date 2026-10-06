@@ -722,6 +722,7 @@ function mulaiLatihanKanji(bab, level) {
     babLatihanKanji = bab;
     levelLatihanKanji = level;
     hasilSesiKanji = [];
+    sedangLatihanKanji = []
   
     dataLatihanKanji =
         kanjiN5.filter(item => item.bab === bab);
