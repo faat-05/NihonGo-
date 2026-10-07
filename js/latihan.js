@@ -540,19 +540,16 @@ function tampilkanSoalKanji() {
         item => item.bab === babLatihanKanji
     );
 
-    // Ambil 3 jawaban salah
     const pilihanSalah = dataBab
         .filter(item => item.id !== soal.id)
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
 
-    // Gabungkan jawaban benar + salah
     let pilihan = [
         soal,
         ...pilihanSalah
     ];
 
-    // Acak pilihan
     pilihan.sort(() => Math.random() - 0.5);
 
     const container =
@@ -564,7 +561,14 @@ function tampilkanSoalKanji() {
 
         const tombol = document.createElement("button");
 
-        tombol.textContent = item.arti;
+        // Level 1 = Arti
+        // Level 2 = Bacaan
+        if (levelLatihanKanji === 1) {
+            tombol.textContent = item.arti;
+        } else if (levelLatihanKanji === 2) {
+            tombol.textContent =
+                bacaanKanjiN5[item.id];
+        }
 
         tombol.dataset.id = item.id;
 
@@ -576,15 +580,17 @@ function tampilkanSoalKanji() {
 
     });
 
-    // Tampilkan Kanji
     document.getElementById("soalKanji").textContent =
         soal.kanji;
 
-    // Update nomor soal
+    document.querySelector(".instruksi-soal").textContent =
+        levelLatihanKanji === 1
+            ? "Pilih arti yang benar"
+            : "Pilih bacaan yang benar";
+
     document.querySelector(".nomor-soal").textContent =
         `${nomorSoalKanji + 1} / ${dataLatihanKanji.length}`;
 
-    // Reset pilihan
     jawabanDipilihKanji = null;
     sudahDikonfirmasiKanji = false;
 
@@ -593,26 +599,6 @@ function tampilkanSoalKanji() {
 
     document.getElementById("btnBerikutnyaKanji").style.display =
         "none";
-}
-
-function pilihJawabanKanji(tombol) {
-
-    if (sudahDikonfirmasiKanji) return;
-
-    const semuaPilihan =
-        document.querySelectorAll("#pilihanKanji button");
-
-    semuaPilihan.forEach(btn => {
-        btn.classList.remove("terpilih");
-    });
-
-    tombol.classList.add("terpilih");
-
-    jawabanDipilihKanji =
-        Number(tombol.dataset.id);
-
-    document.getElementById("btnKonfirmasiKanji").style.display =
-        "block";
 }
 
 function konfirmasiJawabanKanji() {
