@@ -209,7 +209,7 @@ function tampilLatihan(tombol = null) {
 
                     <div>
                         <h3>Tebak Kata</h3>
-                        <p>Sedang dalam tahap pengembangan.</p>
+                        <p>Sedang dalam pengembangan. Sabar ya 😄</p>
                     </div>
 
                     <span class="panah-latihan">›</span>
@@ -220,7 +220,7 @@ function tampilLatihan(tombol = null) {
 
                     <div>
                         <h3>Pola Kalimat</h3>
-                        <p>Sedang dalam tahap pengembangan.</p>
+                        <p>Sedang dalam pengembangan. Sabar ya 😄.</p>
                     </div>
 
                     <span class="panah-latihan">›</span>
