@@ -599,6 +599,26 @@ function tampilkanSoalKanji() {
         "none";
 }
 
+function pilihJawabanKanji(tombol) {
+
+    if (sudahDikonfirmasiKanji) return;
+
+    const semuaPilihan =
+        document.querySelectorAll("#pilihanKanji button");
+
+    semuaPilihan.forEach(btn => {
+        btn.classList.remove("terpilih");
+    });
+
+    tombol.classList.add("terpilih");
+
+    jawabanDipilihKanji =
+        Number(tombol.dataset.id);
+
+    document.getElementById("btnKonfirmasiKanji").style.display =
+        "block";
+}
+
 function konfirmasiJawabanKanji() {
 
     if (jawabanDipilihKanji === null) return;
