@@ -220,7 +220,7 @@ function tampilLatihan(tombol = null) {
 
                     <div>
                         <h3>Pola Kalimat</h3>
-                        <p>Sedang dalam pengembangan. Sabar ya 😄.</p>
+                        <p>Sedang dalam pengembangan. Sabar ya 😄</p>
                     </div>
 
                     <span class="panah-latihan">›</span>
@@ -729,9 +729,9 @@ function mulaiLatihanKanji(bab, level) {
 
     if (level === 1) {
 
-        dataLatihanKanji = dataLatihanKanji
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 10);
+    dataLatihanKanji =
+        acakArray(dataLatihanKanji)
+        .slice(0, 10);
 
     }
 
