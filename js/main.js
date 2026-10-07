@@ -692,29 +692,7 @@ function tutupPopupLevelKanjiDetail() {
     }
 }
 
-// MULAI LATIHAN KANJI
-function mulaiLatihanKanji(bab, level) {
 
-    babLatihanKanji = bab;
-    levelLatihanKanji = level;
-    sedangLatihanKanji = true;
-    hasilSesiKanji = [];
-
-    // Ambil Kanji sesuai bab
-    dataLatihanKanji = kanjiN5.filter(item => item.bab === bab);
-
-    // Level 1 = 10 soal
-    if (level === 1) {
-        dataLatihanKanji = dataLatihanKanji
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 10);
-    }
-
-    nomorSoalKanji = 0;
-    jawabanBenarKanji = 0;
-
-    tampilSoalKanji();
-}
 
 // TAMPILKAN SOAL KANJI
 function mulaiLatihanKanji(bab, level) {
