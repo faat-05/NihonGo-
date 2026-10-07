@@ -561,23 +561,21 @@ function tampilkanSoalKanji() {
 
         const tombol = document.createElement("button");
 
-        // Level 1 = Arti
-        // Level 2 = Bacaan
         if (levelLatihanKanji === 1) {
             tombol.textContent = item.arti;
-        } else if (levelLatihanKanji === 2) {
-            tombol.textContent =
-                bacaanKanjiN5[item.id];
+        }
+
+        if (levelLatihanKanji === 2) {
+            tombol.textContent = bacaanKanjiN5[item.id];
         }
 
         tombol.dataset.id = item.id;
 
         tombol.onclick = function () {
-            pilihJawabanKanji(this);
+            pilihJawabanKanji(tombol);
         };
 
         container.appendChild(tombol);
-
     });
 
     document.getElementById("soalKanji").textContent =
