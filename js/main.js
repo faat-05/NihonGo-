@@ -705,13 +705,18 @@ function mulaiLatihanKanji(bab, level) {
     dataLatihanKanji =
         kanjiN5.filter(item => item.bab === bab);
 
-    if (level === 1) {
+   if (level === 1) {
 
     dataLatihanKanji =
         acakArray(dataLatihanKanji)
         .slice(0, 10);
 
-    }
+} else if (level === 2) {
+
+    dataLatihanKanji =
+        acakArray(dataLatihanKanji);
+
+}
 
     nomorSoalKanji = 0;
     jawabanBenarKanji = 0;
